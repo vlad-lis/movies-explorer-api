@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 const { errors } = require('celebrate');
 const router = require('./routes/routes');
 const { PORT, DB_URL } = require('./config');
-const { INTERNAL_SERVER_ERROR, internalErrMessage } = require('./utils/constants');
+
+// import middlewares
+const errorMiddleware = require('./middlewares/errorMiddleware');
 
 // app init
 const app = express();
@@ -17,17 +19,6 @@ app.use('/', router);
 
 // errors
 app.use(errors());
-app.use((err, req, res, next) => {
-  const { statusCode = INTERNAL_SERVER_ERROR, message } = err;
-
-  res
-    .status(statusCode)
-    .send({
-      message: statusCode === INTERNAL_SERVER_ERROR
-        ? internalErrMessage
-        : message,
-    });
-  next();
-});
+app.use(errorMiddleware);
 
 app.listen(PORT);
