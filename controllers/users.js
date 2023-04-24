@@ -4,6 +4,10 @@ const User = require('../models/user');
 const BadRequestError = require('../errors/BadRequest');
 const ConflictError = require('../errors/Conflict');
 const NotFoundError = require('../errors/NotFound');
+const {
+  badRequestErrMessage, conflictErrMessage, notFoundErrMessage,
+  loginSuccessMessage, logoutSuccessMessage,
+} = require('../utils/constants');
 const { JWT_SECRET } = require('../config');
 
 // create user
@@ -23,9 +27,9 @@ module.exports.createUser = (req, res, next) => {
     }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        next(new BadRequestError('incorrect data'));
+        next(new BadRequestError(badRequestErrMessage));
       } else if (err.code === 11000) {
-        next(new ConflictError('user already exists'));
+        next(new ConflictError(conflictErrMessage));
       } else {
         next(err);
       }
@@ -38,12 +42,12 @@ module.exports.getUserById = (req, res, next) => {
 
   User.findById(userId)
     .orFail(() => {
-      throw new NotFoundError('NotFound');
+      throw new NotFoundError(notFoundErrMessage);
     })
     .then((user) => res.send(user))
     .catch((err) => {
       if (err.name === 'CastError') {
-        next(new BadRequestError('incorrect data'));
+        next(new BadRequestError(badRequestErrMessage));
       } else {
         next(err);
       }
@@ -56,12 +60,12 @@ module.exports.updateUserInfo = (req, res, next) => {
 
   User.findByIdAndUpdate(req.user._id, { name, email }, { new: true, runValidators: true })
     .orFail(() => {
-      throw new NotFoundError('NotFound');
+      throw new NotFoundError(notFoundErrMessage);
     })
     .then((user) => res.send(user))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        next(new BadRequestError('incorrect data'));
+        next(new BadRequestError(badRequestErrMessage));
       } else {
         next(err);
       }
@@ -85,7 +89,7 @@ module.exports.login = (req, res, next) => {
         httpOnly: true,
         sameSite: true,
       })
-        .send({ message: 'success' })
+        .send({ message: loginSuccessMessage })
         .end();
     })
     .catch(next);
@@ -98,7 +102,7 @@ module.exports.logout = (req, res, next) => {
       httpOnly: true,
       sameSite: true,
     })
-      .send({ message: 'logout success' })
+      .send({ message: logoutSuccessMessage })
       .end();
   } catch (err) {
     next(err);

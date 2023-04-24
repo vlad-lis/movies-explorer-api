@@ -2,6 +2,7 @@ const Movie = require('../models/movie');
 const BadRequestError = require('../errors/BadRequest');
 const NotFoundError = require('../errors/NotFound');
 const ForbiddenError = require('../errors/Forbidden');
+const { badRequestErrMessage, notFoundErrMessage, forbiddenErrMessage } = require('../utils/constants');
 
 // get all user movies
 module.exports.getMovies = (req, res, next) => {
@@ -18,7 +19,7 @@ module.exports.createMovie = (req, res, next) => {
     .then((movie) => res.send(movie))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        next(new BadRequestError('incorrect data'));
+        next(new BadRequestError(badRequestErrMessage));
       } else {
         next(err);
       }
@@ -31,11 +32,11 @@ module.exports.deleteMovie = (req, res, next) => {
 
   Movie.findById(movieId)
     .orFail(() => {
-      throw new NotFoundError('NotFound');
+      throw new NotFoundError(notFoundErrMessage);
     })
     .then((movie) => {
       if (movie.owner._id.toString() !== req.user._id) {
-        throw new ForbiddenError('access forbidden');
+        throw new ForbiddenError(forbiddenErrMessage);
       }
 
       return Movie.deleteOne(movie);
@@ -43,7 +44,7 @@ module.exports.deleteMovie = (req, res, next) => {
     .then((movie) => res.send(movie))
     .catch((err) => {
       if (err.name === 'CastError') {
-        next(new BadRequestError('incorrect data'));
+        next(new BadRequestError(badRequestErrMessage));
       } else {
         next(err);
       }
