@@ -5,10 +5,21 @@ const { createUser, login, logout } = require('../controllers/users');
 // sign up
 router.post('/signup', celebrate({
   body: Joi.object().keys({
-    name: Joi.string().min(2).max(30),
-    about: Joi.string().min(2).max(30),
-    avatar: Joi.string().allow('').pattern(urlRegex),
+    email: Joi.string().email().required(),
+    password: Joi.string().required(),
+    name: Joi.string().min(2).max(30).required(),
+  }),
+}), createUser);
+
+// sign in
+router.post('/signin', celebrate({
+  body: Joi.object().keys({
     email: Joi.string().email().required(),
     password: Joi.string().required(),
   }),
-}), createUser);
+}), login);
+
+// sign out
+router.post('/signout', logout);
+
+module.exports = router;
