@@ -2,7 +2,10 @@ const router = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
 const { getUserById, updateUserInfo } = require('../controllers/users');
 
+// get current user info
 router.get('/me', getUserById);
+
+// change user info
 router.patch('/me', celebrate({
   body: Joi.object().keys({
     email: Joi.string().email().required(),
