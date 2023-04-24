@@ -38,20 +38,12 @@ module.exports.createUser = (req, res, next) => {
 
 // find user by id
 module.exports.getUserById = (req, res, next) => {
-  const { userId } = req.params;
-
-  User.findById(userId)
+  User.findById(req.user._id)
     .orFail(() => {
-      throw new NotFoundError(notFoundErrMessage);
+      throw new NotFoundError('NotFound');
     })
     .then((user) => res.send(user))
-    .catch((err) => {
-      if (err.name === 'CastError') {
-        next(new BadRequestError(badRequestErrMessage));
-      } else {
-        next(err);
-      }
-    });
+    .catch(next);
 };
 
 // update user info

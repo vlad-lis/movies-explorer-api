@@ -4,12 +4,10 @@ const validator = require('validator');
 const movieSchema = new mongoose.Schema({
   country: {
     type: String,
-    minlength: 2,
     required: true,
   },
   director: {
     type: String,
-    minlength: 2,
     required: true,
   },
   duration: {
@@ -17,7 +15,7 @@ const movieSchema = new mongoose.Schema({
     required: true,
   },
   year: {
-    type: Number,
+    type: String,
     required: true,
   },
   description: {
