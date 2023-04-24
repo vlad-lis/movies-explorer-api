@@ -17,6 +17,9 @@ const invalidEmailErrMessage = 'incorrect email';
 const loginSuccessMessage = 'login successful';
 const logoutSuccessMessage = 'logout successful';
 
+// url validation regex
+const urlRegex = /https?:\/\/(www.)?[0-9a-z\-.]{1,}\.\w{1,}((\/[a-z0-9-._~:?#[\]@!$&'()*+,;=]{1,}){1,}\/?#?)?/;
+
 module.exports = {
   BAD_REQUEST,
   UNAUTHORIZED,
@@ -33,4 +36,5 @@ module.exports = {
   invalidEmailErrMessage,
   loginSuccessMessage,
   logoutSuccessMessage,
+  urlRegex,
 };
