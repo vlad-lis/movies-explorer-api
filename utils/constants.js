@@ -10,7 +10,7 @@ const unauthorizedErrMessage = 'Unauthorized';
 const forbiddenErrMessage = 'access forbidden';
 const notFoundErrMessage = 'NotFound';
 const conflictErrMessage = 'user already exists';
-const internalErrMessage = '';
+const internalErrMessage = 'server error';
 const invalidEmailErrMessage = 'incorrect email';
 
 // login, logout success messages
