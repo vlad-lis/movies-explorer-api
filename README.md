@@ -3,7 +3,7 @@
 
 Репозиторий: https://github.com/vlad-lis/movies-explorer-api
 
-Адрес: https://api.movie-explorer.nomoredomains.monster/
+Адрес: https://api.movie-explorer.nomoredomains.monster/  
 IP: 158.160.39.63
 
 ## Доступные запросы
