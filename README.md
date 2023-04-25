@@ -11,7 +11,7 @@ IP: 158.160.39.63
 * POST /signup  
 создаёт пользователя с переданными в теле email, password и name
 
-* POST /signin 
+* POST /signin  
 проверяет переданные в теле почту и пароль и возвращает JWT
 
 * POST /signout  
