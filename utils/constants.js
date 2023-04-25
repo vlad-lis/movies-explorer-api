@@ -13,9 +13,10 @@ const conflictErrMessage = 'user already exists';
 const internalErrMessage = 'server error';
 const invalidEmailErrMessage = 'incorrect email';
 
-// login, logout success messages
+// login, logout, validation messages
 const loginSuccessMessage = 'login successful';
 const logoutSuccessMessage = 'logout successful';
+const incorrectUrlMessage = 'incorrect email';
 
 // url validation regex
 const urlRegex = /https?:\/\/(www.)?[0-9a-z\-.]{1,}\.\w{1,}((\/[a-z0-9-._~:?#[\]@!$&'()*+,;=]{1,}){1,}\/?#?)?/;
@@ -36,5 +37,6 @@ module.exports = {
   invalidEmailErrMessage,
   loginSuccessMessage,
   logoutSuccessMessage,
+  incorrectUrlMessage,
   urlRegex,
 };

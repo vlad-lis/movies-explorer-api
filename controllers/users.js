@@ -40,7 +40,7 @@ module.exports.createUser = (req, res, next) => {
 module.exports.getUserById = (req, res, next) => {
   User.findById(req.user._id)
     .orFail(() => {
-      throw new NotFoundError('NotFound');
+      throw new NotFoundError(notFoundErrMessage);
     })
     .then((user) => res.send(user))
     .catch(next);
@@ -58,6 +58,8 @@ module.exports.updateUserInfo = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError(badRequestErrMessage));
+      } else if (err.code === 11000) {
+        next(new ConflictError(conflictErrMessage));
       } else {
         next(err);
       }
