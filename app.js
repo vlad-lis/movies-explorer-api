@@ -22,7 +22,7 @@ app.use(rateLimit(limiterConfig));
 app.use(helmet());
 app.use(cors(corsConfig));
 app.use(express.json());
-app.use(cookieParser());
+app.use(cookieParser({ sameSite: 'none', secure: true }));
 
 // mongodb
 mongoose.connect(DB_URL, { useNewUrlParser: true });
