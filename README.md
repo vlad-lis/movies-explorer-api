@@ -2,7 +2,6 @@
 This is the backend part (API) of the final project of the web development course.  
 The frontend part can be found <a href="https://github.com/vlad-lis/movies-explorer-frontend" target="_blank">here</a>.
 
-<br>
 
 ## Repository and address 
 * Repository: https://github.com/vlad-lis/movies-explorer-api  
@@ -11,7 +10,6 @@ The frontend part can be found <a href="https://github.com/vlad-lis/movies-explo
 
 * Public IP: 158.160.39.63
 
-<br>
 
 ## Run locally
 1. Clone repository.
@@ -20,7 +18,6 @@ The frontend part can be found <a href="https://github.com/vlad-lis/movies-explo
 4. To configure the port, database and jwt settings create an .env file in root directory.  
    (.env template can be found in .env.template file)
 
-<br>
 
 ## Available requests
 * **POST /signup**  
