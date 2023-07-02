@@ -5,8 +5,7 @@ It contains a few [endpoints](#available-requests) to handle user registration, 
 The frontend part can be found <a href="https://github.com/vlad-lis/movies-explorer-frontend" target="_blank">here</a>.
 
 Here is a sample test of the /signup endpoint conducted via Postman:
-<img src="./readme_images/postmansample.png" alt="home screenshot"> 
-
+<img src="./readme_images/postmansample-signup.png" alt="home screenshot"> 
 
 ## Repository and address 
 * Public address: https://api.movie-explorer.nomoredomains.monster/  
