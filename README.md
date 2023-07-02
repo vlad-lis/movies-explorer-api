@@ -4,21 +4,16 @@ It contains a few [endpoints](#available-requests) to handle user registration, 
 
 The frontend part can be found <a href="https://github.com/vlad-lis/movies-explorer-frontend" target="_blank">here</a>.
 
+Here is a sample test of the /signup endpoint conducted via Postman:
+<img src="./readme_images/postmansample.png" alt="home screenshot"> 
+
 
 ## Repository and address 
-* Repository: https://github.com/vlad-lis/movies-explorer-api  
-
 * Public address: https://api.movie-explorer.nomoredomains.monster/  
 
 * Public IP: 158.160.39.63
 
-
-## Run locally
-1. Clone repository.
-2. Install dependencies (```$npm i```)
-3. While in the local repository run ```$npm run start``` or ```$npm run dev``` (hot reload).
-4. To configure the port, database and jwt settings create an .env file in root directory.  
-   (.env template can be found in .env.template file)
+To run locally see [instructions](#run-locally) below.
 
 
 ## Available requests
@@ -45,3 +40,10 @@ Saves a movie to the database; expects the request body with 'country', 'directo
 
 * **DELETE /movies/_id**  
 Deletes a saved movie by its ID; expects the ID to be a hexadecimal string with a length of 24 characters.
+
+## Run locally
+1. Clone repository.
+2. Install dependencies (```$npm i```)
+3. While in the local repository run ```$npm run start``` or ```$npm run dev``` (hot reload).
+4. To configure the port, database and jwt settings create an .env file in root directory.  
+   (.env template can be found in .env.template file)
