@@ -1,5 +1,7 @@
 # Movies Explorer API
 This is the backend part (API) of the final project of the web development course.  
+It contains a few [endpoints](#available-requests) to handle user registration, login and logout, adding movies to favorites, or removing them from favorites.  
+
 The frontend part can be found <a href="https://github.com/vlad-lis/movies-explorer-frontend" target="_blank">here</a>.
 
 
@@ -14,7 +16,7 @@ The frontend part can be found <a href="https://github.com/vlad-lis/movies-explo
 ## Run locally
 1. Clone repository.
 2. Install dependencies (```$npm i```)
-3. While in the local repository run ```$node app.js``` or ```$npx nodemon app.js```
+3. While in the local repository run ```$npm run start``` or ```$npm run dev``` (hot reload).
 4. To configure the port, database and jwt settings create an .env file in root directory.  
    (.env template can be found in .env.template file)
 
